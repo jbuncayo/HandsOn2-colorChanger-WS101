@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Color Changer</title>
+
+    <style>
+        body {
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            background-color: #f0f0f0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #3498db, #f0f0f0);
+        }
+
+        h1 {
+            color: white;
+        }
+
+        #colorDiv {
+            display: inline-flex;
+            width: 200px;
+            height: 200px;
+            background-color: green;
+            border-radius: 10px;
+            transition: background-color 0.5s ease-in-out;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        /* Add this to your existing styles */
+		.switch {
+    		position: relative;
+    		display: inline-block;
+    		width: 60px;
+    		height: 34px;
+		}
+
+		.switch input {
+    		opacity: 0;
+    		width: 0;
+    		height: 0;
+		}
+
+		.slider {
+    		position: absolute;
+    		cursor: pointer;
+    		top: 0;
+    		left: 0;
+    		right: 0;
+    		bottom: 0;
+    		background-color: #ccc;
+    		transition: 0.4s;
+    		border-radius: 34px;
+		}
+
+		.slider:before {
+    		position: absolute;
+    		content: "";
+    		height: 26px;
+    		width: 26px;
+    		left: 4px;
+    		bottom: 4px;
+    		background-color: white;
+    		transition: 0.4s;
+    		border-radius: 50%;
+		}
+
+		input:checked + .slider {
+    		background-color: #2196F3;
+		}
+
+		input:focus + .slider {
+    		box-shadow: 0 0 1px #2196F3;
+		}
+
+		input:checked + .slider:before {
+    		transform: translateX(26px);
+		}
+
+		/* Dark Theme */
+		.dark {
+    		background: linear-gradient(to right, #2c3e50, #1c2331);
+    		color: #fff;
+		}
+    </style>
+</head>
+<body>
+
+    <div>
+        <h1 id="title">JavaScript Color Changer</h1>
+
+        <label class="switch">
+    		<input type="checkbox" id="themeSwitch">
+    		<span class="slider round"></span>
+		</label> <br> 
+
+        <br> <div id="colorDiv"></div> <br>
+        <button id="changeColorBtn">Change Color</button>
+    </div>
+
+    <script>
+        let colorDiv = document.getElementById("colorDiv");
+        let changeColorBtn = document.getElementById("changeColorBtn");
+
+        let themeSwitch = document.getElementById("themeSwitch");
+
+        changeColorBtn.addEventListener("click", changeColor);
+        themeSwitch.addEventListener("change", toggleTheme);
+
+        function changeColor() {
+            if (colorDiv.style.backgroundColor == "green") {
+                colorDiv.style.backgroundColor = "blue";
+            } else {
+                colorDiv.style.backgroundColor = "green";
+            }
+        }
+
+        function toggleTheme() {
+    		document.body.classList.toggle("dark");
+		}
+
+    </script>
+
+</body>
+</html>
